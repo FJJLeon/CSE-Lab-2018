@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lab4.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="lab-4-hdfs-and-fault-tolerance">Lab 4: HDFS and Fault Tolerance</h1>
+<p>In this lab, you will realize the power of interface. As long as your code confirms to HDFS protocol, your program could talk to Hadoop seamlessly. And you will learn how to achieve fault tolerance by replicating data.</p>
+<p>TA rododo (409146908@qq.com) is responsible for this lab. If you have any problem, contact him by QQ, WeChat or email.</p>
+<p>The deadline of this lab is <strong>2018-12-16 23:59</strong>.</p>
+<h2 id="updates">Updates</h2>
+<p>Some bugs are reported by students and I fixed them in a new commit. If you start your lab4 before <strong>2018-12-01</strong>, <code>git pull</code> should make your code updated. You should see a &quot;ino_out -&gt; ino&quot; at &quot;Sat Dec 1 20:17&quot; in <code>git log</code> after you correctly update your code.</p>
+<h2 id="background">Background</h2>
+<h3 id="hadoop-and-hdfs">Hadoop and HDFS</h3>
+<p>Hadoop is a well-known and widely used distributed data processing framework.
+It includes a distributed file system called HDFS, the data being processed and the output is stored in it.
+Based on HDFS, it provides a MapReduce framework, so a huge data could be partitioned and processed by multiple servers simultaneously.</p>
+<p>In this lab, we will extend our YFS server to support HDFS protocol, so the MapReduce framework could use our YFS as storage system.</p>
+<p>Here is some introduction of HDFS architecture:
+One HDFS cluster has one or multiple <strong>namenodes</strong>, they are responsible for managing FS metadata, including directory structure and block locations.
+One HDFS cluster also has one or multiple <strong>datanodes</strong>, they are responsible for store the actual data blocks.</p>
+<p>Though they are both FS, there are some differences between HDFS and YFS:</p>
+<ol>
+<li>In YFS, <code>inode_manager</code> will store superblock, inodes and indirect blocks in <code>block_manager</code>, so they could be persisted.
+But in HDFS, the network connection between namenode and datanode could be very slow, so it's inefficient for namenode to store data on datanode.
+Instead, namenode will store all the metadata on its own disk.
+The fault tolerance is achieved by replicate the namenode server directly.</li>
+<li>Based on the characteristic of the workload, HDFS only support append write, instead of random write.
+This makes the design much simpler despite the data blocks is distributed.</li>
+<li>In HDFS, client will ask namenode only for block locations (which datanodes store it), and connect to the datanodes directly by itself, instead of asking namenode to fetch data for it.</li>
+</ol>
+<h3 id="ssh-scp">SSH &amp; SCP</h3>
+<p>In previous labs you may use VMware/VirtualBox/Parallels or some other desktop virtualization solutions to run Linux on your host OS (usually Windows).
+These tools provide a graphic interface so you could use a graphic editor (VS code/gedit/Sublime Text/...) in VM or copy your code to host OS easily.
+But in cloud environment, it's hard to have a graphic interface due to resource limitation, so you should get used to using text interface.
+There are several tools to allow you connect to the server remotely for a text interface.
+SSH is a remote terminal so you could run arbitrary commands on server.
+SCP is a tool to copy files from and to servers.
+On Windows, you could use <strong>PuTTY</strong> as a SSH client and <strong>WinSCP</strong> as a SCP client.</p>
+<p>Note that the test scripts in this lab will automatically compile and send your program to VMs, so you won't be bothered to transfer your code to VMs again and again.
+All you need to do manually on VMs is some basic configuration in Part 0 and Part 1.</p>
+<h2 id="get-lab4">Get lab4</h2>
+<p>First, save your lab3 solution:</p>
+<p><code>% git commit -a -m &quot;solution for lab3&quot;</code></p>
+<p>Then, pull from the repository:</p>
+<pre class="hljs"><code><div>% git pull
+remote: Counting objects: 43, done.
+…
+...
+ * [new branch]      lab4      -&gt; origin/lab4
+Already up-to-date
+</div></code></pre>
+<p>Then, change to lab4 branch:</p>
+<p><code>% git checkout lab4</code></p>
+<p>Merge with lab3, and solve the conflict by yourself (Git may not be able to figure out how to merge your changes with the new lab assignment (e.g., if you modified some of the code that the second lab assignment changes). In that case, git merge will tell you which files have conflicts, and you should first resolve the conflicts (by editing the relevant files) and then run <code>git commit -a</code>):</p>
+<pre class="hljs"><code><div>% git merge lab3
+…
+</div></code></pre>
+<p>After merge all of the conflicts, you should be able to compile successfully:</p>
+<p><code>% make</code></p>
+<p>If there's no error in make, 5 executable files <code>yfs_client</code>, <code>lock_server</code>, <code>extent_server</code>, <code>namenode</code>, <code>datanode</code> will be generated.</p>
+<h2 id="part-0-setup-environment">Part 0: Setup Environment</h2>
+<p>In the Tencent Cloud preparation part, you have created 4 VMs in your account. Ubuntu 16.04 is alreayd installed, but it need some additional configuration.</p>
+<h3 id="configuration-overview">Configuration Overview</h3>
+<p>As we introduced before, a simple Hadoop cluster consists of clients, namenodes and datanodes. In this lab, we will use one VM called &quot;app&quot; as client machine, one VM called &quot;name&quot; as namenode and two VMs called &quot;data1&quot;/&quot;data2&quot; as datanodes. You should make sure the hostname and parameters are matched on every VM, otherwise the test scripts may get confused.</p>
+<h3 id="hostname">Hostname</h3>
+<p>Each VM has its own hostname, managed by OS.
+By default, Tencent Cloud generates one for each VM, you should modify it so Hadoop and our test scripts could detect which machine it is on correctly.</p>
+<p>Use your favorite editor to open <code>/etc/hostname</code> and set it according to VM name. You need root privilege to modify the file. Reboot the VM so the modification could take effect.</p>
+<h3 id="vm-instance-name-optional">VM Instance Name (Optional)</h3>
+<p>Besides the hostname, each VM on Tencent Cloud has a name shown in the console page. It's for you to recognize VM in console.
+Although there is no relation between the two names, we highly recommend you to assign the same console name and hostname to each VM.</p>
+<h3 id="user">User</h3>
+<p>By default, an account called 'ubuntu' is created, you need to work on another account called 'cse' so the test script could work.</p>
+<p>Execute <code>sudo adduser cse</code> and follow the prompt to create the user. You could use any password you like, as we will configure passwordless ssh later.</p>
+<p>We assume that you will use the 'cse' account in all following parts of this lab, never use the old 'ubuntu' or 'root'.</p>
+<h3 id="allow-cse-to-sudo">Allow &quot;cse&quot; to sudo</h3>
+<p>Which users could use <code>sudo</code> is controlled by <code>/etc/sudoers</code>.
+You can use <code>sudo visudo</code> to edit it.
+Just add <code>cse ALL=(ALL:ALL) NOPASSWD: ALL</code> at the end of the file. This will allow user &quot;cse&quot; to use <code>sudo</code> without password.</p>
+<p>You can also edit this file using your favorite editor. But be careful with the content. If you make any mistake in the file, you will not be able to use <code>sudo</code> again.
+This means that you have no chance to fix the mistake forever.
+<code>visudo</code> will check the syntax before save so it can help to prevent this happends.</p>
+<h3 id="etchosts">/etc/hosts</h3>
+<p>By default, Tencent Cloud will generate a virtual switch to connect the 4 VMs together, and assign private IP &amp; public IP for each.
+You could login on any of them and <code>ping</code> others' <strong>private</strong> IP, it should work normally.
+But in order to use others' hostname for convenience, <code>/etc/hosts</code> should be configured.</p>
+<p>Use your favorite editor to open <code>/etc/hosts</code> on every VM and setup private IP-hostname mapping for all VM including itself.
+You need to make sure that the VM's hostname is only mapped to its private IP, delete the VM hostname after '127.0.0.1' if it exists.
+Note that you need root privilege to modify the file.</p>
+<h3 id="passwordless-ssh">Passwordless SSH</h3>
+<p>After setup all network stuff, you should be able to do <code>ssh name</code>/<code>ssh data1</code>/..., but it will ask you for the password, even if the password is same on all VMs. The SSH tool won't try to connect to other system with your current password.</p>
+<p>There exists a technique called &quot;public key authentication&quot; could help to solve this problem.
+The public key authentication requires you to generate a key pair, hold private key on the client host and put public key on the target host.
+SSH will automatically test the two keys, if they are matched, the system allows you to login without password.</p>
+<p>The key pair could be generated by <code>ssh-keygen</code> command on Linux or <strong>PuTTYgen</strong> on Windows.
+If you want to use PuTTY to connect to the server without password, you should use PuTTYgen to generate the key pair because PuTTY doesn't support key format of <code>ssh-keygen</code>.</p>
+<h4 id="generate-using-ssh-keygen">Generate Using ssh-keygen</h4>
+<p>Execute <code>ssh-keygen</code> on any Linux/Mac host, it will generate a key pair in <code>~/.ssh</code>, public key is <code>~/.ssh/id_rsa.pub</code>, private key is <code>~/.ssh/id_rsa</code>.</p>
+<h4 id="generate-using-puttygen">Generate Using PuTTYgen</h4>
+<p>Start PuTTYgen, click &quot;Generate&quot; and follow the instruction.
+After generation,
+click &quot;Save public key&quot; to save public key.
+Click &quot;Save private key&quot; to save private key (.ppk format) for PuTTY usage.
+Click &quot;Conversions&quot;-&quot;Export OpenSSH key&quot; to save private key  (<code>ssh-keygen</code> format) for Linux use.</p>
+<h4 id="passwordless-login-configuration">Passwordless Login Configuration</h4>
+<p>After getting public key (a line of text like &quot;ssh-rsa AAAA...&quot;), add it to <code>~/.ssh/authorized_keys</code>.
+On Linux client, put private key at <code>~/.ssh/id_rsa</code>.
+On Windows client, specify the .ppk file in &quot;Connection&quot;-&quot;SSH&quot;-&quot;Auth&quot;-&quot;Private key file for authentication&quot;.</p>
+<p>The test script will try to manage other VMs from app VM, so you need to make sure the app VM could ssh to other VM without password.</p>
+<p>TA will grade your lab by connecting to your app VM, so please add TA's public key to its <code>authorized_keys</code>, too.</p>
+<p>TA's public key: <code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDPYzrRrs4AKIaEK8AxZxqCHRb1LwxBpRz61zfsw3U9zPcyyPxruiz8sK7ph9+r7Z0dA6rfJY6suO/uQosC5X7NtW0zvplePm4GzxEPKBWtGYC9H3lwU8hZBXhgcNRphRPCITImC4d7/TB+qib7cBzlRO2F9y4k2OcQRnNAiHdq8vmdvxptiT/345F732Ijqyi5hjKE66bIufcmiJi/GugqeBgs8oPnWRMCedzVs17E59nbOUIYqJLQgsz1HD/KGR9Pu3niuTd6djze9c7sFfLQRNZL5TqeWGCPXbYAQYgQMQ/angtsLdKwnh+6Cn5xgwSPBlblbSKiRfD9qkOtx2AH rododo</code></p>
+<h3 id="install-fuse">Install fuse</h3>
+<p>The test script will run <code>yfs_client</code> on your app VM, please install fuse on it. <code>sudo apt-get install fuse</code> should be enough.</p>
+<h3 id="tests">Tests</h3>
+<p>We provide a <code>test-lab4-part0.sh</code> for you to test the basic configuration.
+This part won't be graded. But if you feel hard to prepare your environment, you could contact TA and 10 pts will be taken from your final score of this lab.</p>
+<p>The test scripts of this lab (not only this part) will firstly read a file called <code>app_public_ip</code> in lab directory.
+If the file doesn't exist, the test script will consider that it's running on app VM.
+If the file does exist, the test script will try to ssh to the IP in the file and run on it.
+Please make sure your docker environment could ssh into app VM without password and you write correct IP into the file before using any test script.</p>
+<h2 id="part-1-deploy-distributed-hadoop">Part 1: Deploy Distributed Hadoop</h2>
+<p>As Hadoop is designed to run on cluster, the configuration is very easy.</p>
+<ol>
+<li>
+<p>Install Java</p>
+<p>Hadoop is written in Java, so you have to install JRE first. Execute <code>sudo apt-get install openjdk-8-jre-headless</code> on all VMs to install JRE from Ubuntu repository.</p>
+</li>
+<li>
+<p>Get Hadoop</p>
+<p>Execute <code>wget http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz</code> in <strong>home directory (/home/cse/)</strong> on every VM to get Hadoop 2.8.5, then execute <code>tar -xf hadoop-2.8.5.tar.gz</code> to extract it.</p>
+<p>After that, you should see a directory named <code>hadoop-2.8.5</code>. Please make sure the directory is at <strong>/home/cse</strong> as the test scripts will assume that and execute it.</p>
+</li>
+<li>
+<p>Setup <code>JAVA_HOME</code></p>
+<p>You need to tell Hadoop where is Java. Add <code>JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64</code> to the head of <code>hadoop-2.8.5/libexec/hadoop-config.sh</code> on every VM.</p>
+</li>
+<li>
+<p>Setup parameters</p>
+<p>In order to allow app/namenode/datanode discover each other, you have to specify the hostname in some configuration files.
+The parameter of HDFS is stored in two XML files.</p>
+<ul>
+<li><code>hadoop-2.8.5/etc/hadoop/core-site.xml</code></li>
+<li><code>hadoop-2.8.5/etc/hadoop/hdfs-site.xml</code></li>
+</ul>
+<p>Here is an example of the configuration file:</p>
+<pre class="hljs"><code><div><span class="php"><span class="hljs-meta">&lt;?</span>xml version=<span class="hljs-string">"1.0"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="php"><span class="hljs-meta">&lt;?</span>xml-stylesheet type=<span class="hljs-string">"text/xsl"</span> href=<span class="hljs-string">"configuration.xsl"</span><span class="hljs-meta">?&gt;</span></span>
+<span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>parameter key<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>parameter value<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">property</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">name</span>&gt;</span>parameter key<span class="hljs-tag">&lt;/<span class="hljs-name">name</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">value</span>&gt;</span>parameter value<span class="hljs-tag">&lt;/<span class="hljs-name">value</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span>
+    ...
+<span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+</div></code></pre>
+<p>Please set parameter according to following instructions:</p>
+<ul>
+<li>Set <code>fs.defaultFS</code> to <code>hdfs://name:9000</code> in <code>core-site.xml</code> on all VMs</li>
+<li>Set <code>dfs.block.size</code> to <code>16384</code> (16K) in <code>hdfs-site.xml</code> on all VMs</li>
+<li>Set <code>dfs.namenode.fs-limits.min-block-size</code> to <code>16384</code> in <code>hdfs-site.xml</code> on namenode/datanode</li>
+<li>Set <code>dfs.replication</code> to <code>2</code> in <code>hdfs-site.xml</code> on app and namenode</li>
+<li>Set <code>dfs.client.max.block.acquire.failures</code> to <code>0</code> in <code>hdfs-site.xml</code> on app</li>
+<li>Set <code>dfs.name.dir</code> to <code>/home/cse/hadoop-data</code> in <code>hdfs-site.xml</code> on namenode</li>
+<li>Set <code>dfs.data.dir</code> to <code>/home/cse/hadoop-data</code> in <code>hdfs-site.xml</code> on two datanodes</li>
+<li>Set <code>dfs.heartbeat.interval</code> to <code>1</code> in <code>hdfs-site.xml</code> on namenode/datanode</li>
+<li>Set <code>dfs.namenode.heartbeat.recheck-interval</code> to <code>0</code> in <code>hdfs-site.xml</code> on namenode</li>
+<li>Set <code>dfs.namenode.replication.pending.timeout-sec</code> to <code>3</code> in <code>hdfs-site.xml</code> on namenode</li>
+</ul>
+</li>
+<li>
+<p>(Optional) Try Hadoop</p>
+<ol>
+<li>
+<p>Format namenode</p>
+<p>Like normal FS, the HDFS cluster must be initialized before using. Execute <code>hadoop-2.8.5/bin/hdfs namenode -format</code> to initialize an HDFS cluster. Every time you want to reinitialize it, you should first remove the <code>hadoop-data</code> directory, then execute the above command again.</p>
+</li>
+<li>
+<p>Start HDFS daemons</p>
+<p>Now, the HDFS cluster could be started. SSH into every HDFS servers and execute <code>hadoop-2.8.5/sbin/hadoop-daemon.sh start namenode/datanode</code> to start namenode/datanode daemon. You can stop them later by execute <code>hadoop-2.8.5/sbin/hadoop-daemon.sh stop namenode/datanode</code>.</p>
+</li>
+<li>
+<p>Try some command</p>
+<p>Hadoop binary distribution provides some command line tools to manage HDFS cluster directly, you can find them in <code>hadoop-2.8.5/bin/</code>. The mostly used one is <code>hdfs</code>. Execute <code>hdfs dfs</code> to see the usage. Try the <code>ls</code>, <code>put</code>, <code>get</code>, <code>mkdir</code>, <code>cat</code>. You may use these commands to help you test and debug your YFS-HDFS implementation.</p>
+</li>
+<li>
+<p>Try WordCount</p>
+<p>WordCount is a classic problem. You must have implemented one without parallelism. And it's quite suitable for parallel processing. After split the whole text into several parts, every worker could count the words in one part, then sum them up.</p>
+<p>Hadoop has an example implementation, you can use it directly. But before executing the program you have to prepare some input. Type some random words into a text file or download an english novel, then use <code>hdfs dfs -put</code> to send it into HDFS. After that, execute <code>hadoop-2.8.5/bin/hadoop jar hadoop-2.8.5/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount &lt;input&gt; &lt;output&gt;</code>. You could see the output using <code>hdfs dfs -ls</code> and download it using <code>hdfs dfs -get</code></p>
+</li>
+<li>
+<p>Try fault tolerance</p>
+<p>In a production HDFS cluster, there may be hundreds or thousands of datanodes. According to the course, it's frequent that one of the datanodes is down. In order to avoid data loss, HDFS will replicate every block three times on different datanodes (Although in our configurtion there is only two datanodes).</p>
+<p>You could manually crash one of the two datanodes by shuting down it and delete <code>hadoop-data</code> directory. After you restart the datanode, namenode will observe the crash and replicate the missing blocks again. As the file is very small, the recovery is very quick. By using <code>hdfs fsck / -blocks</code>, you could see which blocks are under-replicated. If the other datanode crashes before the recovery completes, the block will be permanently lost.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Test your deployment with <code>test-lab4-part1.sh</code>!</p>
+</li>
+</ol>
+<h2 id="part-2-implement-a-single-node-yfs-hdfs-system">Part 2: Implement a Single Node YFS-HDFS System</h2>
+<p>In this part, you need to implement a single node YFS-HDFS system, without any fault tolerance mechanism.
+The system could be used as old YFS and any HDFS-compatible client.
+You could even access files created by YFS in HDFS and vice versa!</p>
+<p>The architecture is:</p>
+<pre class="hljs"><code><div>    &quot;app&quot; VM      ‖             &quot;name&quot; VM
+                  ‖
+   yfs client ----‖------------------------------
+        \         ‖                             |
+         ---------‖------ lock_server           |
+                  ‖           /                 |
+          --------‖---- namenode ---------\     |
+         /        ‖        |               \    |
+   HDFS client    ‖         \            extent_server
+         \        ‖          \              /
+          \-------‖----------- datanode ---/
+                  ‖          (master_datanode)
+</div></code></pre>
+<h3 id="hdfs-architecture-details">HDFS architecture details</h3>
+<p>In HDFS, file data is organized as blocks. Each block has a global-unique block id.
+Namenodes are responsible for allocating block ids, keeping file offset-block id mappings.
+Datanodes only store the blocks, without knowledge of which kind of data is in it.</p>
+<h3 id="how-to-combine-yfs-and-hdfs">How to combine YFS and HDFS</h3>
+<p>In YFS, both <code>inode_manager</code> (in <code>extent_server</code>) and <code>yfs_client</code> is responsible for manager FS metadata.
+This makes it very hard to extract the logic into a single, standalone namenode program without tampering original design.
+We have no choice but expose more inode level interface in <code>extent_protocol</code>(<code>append_block</code>, <code>get_block_ids</code>),
+and create a dedicated <code>namenode</code> server, which use both old and new interface to provide full HDFS namenode service.</p>
+<p>In order to make it compatible with <code>yfs_client</code>, the directory structure part in your <code>namenode</code> must confirm to your design in <code>yfs_client</code>.
+You should always reuse (call or copy) code in your <code>yfs_client</code> if possible.</p>
+<p>Some block level interface is required to implement a <code>datanode</code> server.
+HDFS datanode protocol access data block directly with its id, so <code>read_block</code> and <code>write_block</code> should be added to <code>extent_protocol</code>.</p>
+<p>Here is a summary of new extent protocol interface:</p>
+<ul>
+<li><code>append_block</code>: Given an inode number, allocate and append a block to the inode and return its id.
+Note that in HDFS, namenode only manage the metadata, so the actual data (even the size) won't be given in this request.</li>
+<li><code>get_block_ids</code>: Given an inode number, return id of all data blocks of the file.</li>
+<li><code>read_block</code>: Given a block id, return the data of the disk block.</li>
+<li><code>write_block</code>: Given a block id and data, write the data to the disk block.</li>
+<li><code>complete</code>: Given an inode number and size, this request indicates that the writes to the file is finished, so the metedata (file size, modification time) in inode could be updated safely.</li>
+</ul>
+<p>And you have to implement the namenode/datanode logic in <code>namenode.cc</code>/<code>datanode.cc</code>. Here is a summary of all functions you need to write:</p>
+<ul>
+<li><code>NameNode::GetBlockLocations</code>: Call <code>get_block_ids</code> and convert block ids to <code>LocatedBlock</code>s.</li>
+<li><code>NameNode::Complete</code>: Call <code>complete</code> and unlock the file.</li>
+<li><code>NameNode::AppendBlock</code>: Call <code>append_block</code> and convert block id to <code>LocatedBlock</code>.</li>
+<li><code>NameNode::Rename</code>: Move a directory entry. Note that <code>src_name</code>/<code>dst_name</code> is entry name, not full path.</li>
+<li><code>NameNode::Mkdir</code>: Just call <code>mkdir</code>.</li>
+<li><code>NameNode::Create</code>: Create a file, remember to lock it before return.</li>
+<li><code>NameNode::Isfile/Isdir/Getfile/Getdir/Readdir/Unlink</code>: The same as the functions in <code>yfs_client</code>, but the framework will call these functions with the locks held, so you shouldn't try to lock them again. Otherwise there will be a deadlock.</li>
+<li><code>DataNode::ReadBlock/WriteBlock</code>: Call <code>read_block/write_lock</code> to read/write block on extent server. Be careful that client may want to read/write only parts of the block.</li>
+</ul>
+<h3 id="hints">Hints</h3>
+<ul>
+<li><code>LocatedBlock</code> consists of block id, block offset in the whole file, block size and block location.
+You should be careful about the size of the last block. If the last block is not full (file size % BLOCK_SIZE != 0), you should report the actual data size instead of BLOCK_SIZE.
+The block location is used in Part 3, in Part 2 you can simply pass <code>master_datanode</code> to the constructor.</li>
+<li>Be careful with the lock! Never try to lock a file twice.
+A typical operation sequence is Create -&gt; AppendBlock -&gt; write to datanode -&gt; AppendBlock -&gt; write to datanode -&gt; ... -&gt; Complete.</li>
+<li>The output of your programs will be collected to <code>extent_server.log</code>, <code>namenode.log</code>, <code>datanode.log</code>, <code>yfs_client.log</code>. If you add more <code>printf</code>, remember to call <code>fflush(stdout)</code>.</li>
+</ul>
+<h2 id="part-3-fault-tolerance-with-replication">Part 3: Fault tolerance with replication</h2>
+<p>In this part you need to add replication mechanism to your YFS-HDFS for fault tolerance.
+And we will add two more datanodes to the system.</p>
+<p>The architecture is:</p>
+<pre class="hljs"><code><div>    &quot;app&quot; VM      ‖                            &quot;name&quot; VM
+                  ‖
+   yfs client ----‖------------------------------
+        \         ‖                             |
+         ---------‖------ lock_server           |
+                  ‖           /                 |
+          --------‖---- namenode ---------\     |
+         /        ‖        |               \    |
+   HDFS client    ‖        |\            extent_server0
+         \        ‖        | \              /
+          \-------‖----------- datanode0 --/
+           |      ‖        |  (master_datanode)
+           |      ‖==========================================
+           |      ‖        |\                  &quot;data1&quot; VM
+           |      ‖        | \
+           -------‖----------- datanode1 ---- extent_server1
+           |      ‖        |
+           |      ‖==========================================
+           |      ‖         \                  &quot;data2&quot; VM
+           |      ‖          \
+           -------‖----------- datanode2 ---- extent_server2
+                  ‖
+</div></code></pre>
+<h3 id="hdfs-architecture-details">HDFS architecture details</h3>
+<p>In HDFS, namenode is responsible for managing all datanodes, distributing and replicating blocks among them.
+All datanodes will register themselves on namenodes so namenodes know where the blocks could be placed.
+Namenodes need to track datanodes state. If one datanode fails to send heartbeat normally, all blocks on that datanode should be relocated to other datanodes.</p>
+<h3 id="how-to-implement-replication-in-yfs-hdfs">How to implement replication in YFS-HDFS</h3>
+<p>In Part 2, we have only one datanode running on <code>name</code>, represented by <code>master_datanode</code> in namenode.
+It is directly connected to the extent server used by namenode and <code>yfs_client</code>, so even the file is written by <code>yfs_client</code>, the master datanode could read it.
+We treat it as a never-fault server, so the replication management is much simpler.</p>
+<p>In order to accept more datanodes and allow them to die, firstly we should learn how to track the state of datanodes.
+Once a datanode is started, it will register itself to namenode, and <code>NameNode::RegisterDatanode</code> is called with the ID of the datanode.
+You could save the ID into any member variables/data structures so you could connect to it later.
+Another thing you need to do is monitoring the datanode by heartbeat.
+Create a thread in datanode to send heartbeat periodically and check the heartbeat in namenode.
+The only requirement is that you should detect the death of a datanode within 5 seconds, otherwise the test will report a timeout.
+<code>NameNode::GetDatanodes</code> is used to get all <strong>live</strong> datanodes.
+Don't return any dead datanodes in it!</p>
+<p>After finishing the heartbeat mechanism,
+you should replace the <code>master_datanode</code> in your construction of <code>LocatedBlock</code> with list of live datanodes,
+so the client will know it should write to all of the datanodes and could read from any of them.</p>
+<p>When a new datanode is started after some data is written into YFS-HDFS, the written blocks should be replicated to the new datanode before it is reported as live datanode.
+We provide a function <code>ReplicateBlock</code> to help you complete the replication.
+But it's your responsibility to find out which blocks should be replicated.
+Simply replicate all blocks on extent server is inefficient and may cause the test timeout.
+You should recover a new datanode in 10 seconds.</p>
+<p>You should notice that the data written by <code>yfs_client</code> won't be correctly sent to all of the datanodes.
+It's quite hard to monitor the write operation from <code>yfs_client</code>, so we simply ignore this case in this lab.
+The test script won't test the replication management on files written by <code>yfs_client</code>.
+But if you are interested, you could try to implement it.</p>
+<h3 id="hints">Hints</h3>
+<ul>
+<li>You could finish this part step by step (register -&gt; heartbeat -&gt; replicate -&gt; new datanode recovery), as the test script will test them one by one.</li>
+<li>We provide a utility function called <code>NewThread</code> to help you run a member function in a new thread.
+Assume <code>obj</code> is a pointer to object of class <code>ClassA</code>, to call <code>Fn(arg1)</code> on it in a new thread, use <code>NewThread(obj, &amp;ClassA::Fn, arg1)</code>.
+Remember to include <code>threader.h</code>.</li>
+<li>As only the files created/written by HDFS should be managed, you could record all blocks in a list in namenode, so you could easily find out which blocks should be sent when a new datanode started.</li>
+<li>Never return a new datanode in <code>LocatedBlock</code> or <code>GetDatanodes</code> before the recovery is finished. Otherwise the client may try to read from it and got unrecovered block.</li>
+<li><code>RegisterDatanode</code> is called in the new thread. Do any long operation (like replicate blocks to the new datanode) in it and don't worry about making the system stuck.</li>
+<li><code>master_datanode</code> is a never-fault server, so you could ask it to replicate any block to any other datanode at any time.</li>
+<li>You can send heartbeat by calling <code>SendHeartbeat</code> after connect to namenode in <code>init</code>.
+<code>DatanodeHeartbeat</code> will be called on the namenode with corresponding datanode's ID.</li>
+</ul>
+<h2 id="handin">Handin</h2>
+<p>Like what you did in previous lab, just</p>
+<p><code>make handin</code></p>
+<p>This should produce a file called <code>lab4.tgz</code> in the directory.
+Change the file name to your student id,
+Then upload <code>lab4_[your student id].tgz</code> to ftp://SJTU.Ticholas.Huang:public@public.sjtu.edu.cn/upload/cse/lab4/ before the deadline.
+You are only given the permission to list and create new file, but no overwrite and read. So make sure your implementation has passed all the tests before final submit.</p>
+
+</body>
+</html>
