@@ -1,6 +1,7 @@
 ## HDFS and Fault Tolerance
 使用了腾讯云的4个云服务器，实现使用HDFS，实现心跳检查、冗余和容错
-[文档](https://ipads.se.sjtu.edu.cn/courses/cse/labs/lab4.html)肉多多TQL
+
+[文档](https://ipads.se.sjtu.edu.cn/courses/cse/labs/lab4.html)肉多多NB
 
 ### Log
 配置环境：
